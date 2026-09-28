@@ -4113,7 +4113,11 @@ function initApp() {
 
     console.log(
         "TRADE ACADEMY TJ initialized successfully."
-    );
+    );const loader = document.getElementById("appLoader");
+
+if (loader) {
+    loader.classList.add("loaded");
+}
 }
 
 
