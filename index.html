@@ -2,473 +2,1012 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>Trade Academy — Trading Education</title>
 
     <meta
         name="description"
-        content="Trade Academy — современная образовательная платформа для изучения трейдинга."
+        content="Trade Academy — интерактивная академия трейдинга. Основы, технический анализ, риск-менеджмент, психология, стратегии и практический тест."
     >
 
-    <meta
-        name="theme-color"
-        content="#070b14"
-    >
+    <meta name="theme-color" content="#050807">
 
-    <title>
-        Trade Academy — JABORZODA and MUZAFARZODA
-    </title>
-
-    <!-- =====================================================
-         FONTS
-    ====================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet"
     >
 
-    <!-- =====================================================
-         MAIN CSS
-    ====================================================== -->
+    <link rel="stylesheet" href="style.css">
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <style>
+        /* =========================================================
+           EXTRA STRUCTURE STYLES
+           ========================================================= */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 14px;
+            border: 1px solid rgba(25, 230, 140, .22);
+            background: rgba(25, 230, 140, .06);
+            border-radius: 999px;
+            color: #19e68c;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero-badge-dot {
+            width: 7px;
+            height: 7px;
+            background: #19e68c;
+            border-radius: 50%;
+            box-shadow: 0 0 14px rgba(25, 230, 140, .8);
+        }
+
+        .hero h1 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(46px, 6vw, 82px);
+            line-height: .96;
+            letter-spacing: -.055em;
+            margin: 0 0 25px;
+        }
+
+        .hero h1 span {
+            color: #19e68c;
+        }
+
+        .hero-text {
+            max-width: 650px;
+            color: rgba(255,255,255,.62);
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .hero-note {
+            margin-top: 20px;
+            color: rgba(255,255,255,.38);
+            font-size: 12px;
+        }
+
+        .terminal {
+            position: relative;
+            border: 1px solid rgba(255,255,255,.09);
+            background:
+                radial-gradient(circle at 70% 0%, rgba(25,230,140,.12), transparent 35%),
+                linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.015));
+            border-radius: 25px;
+            padding: 18px;
+            box-shadow:
+                0 35px 100px rgba(0,0,0,.5),
+                inset 0 1px 0 rgba(255,255,255,.05);
+            overflow: hidden;
+        }
+
+        .terminal::after {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            background: rgba(25,230,140,.08);
+            filter: blur(80px);
+            right: -80px;
+            bottom: -80px;
+            pointer-events: none;
+        }
+
+        .terminal-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding-bottom: 17px;
+            border-bottom: 1px solid rgba(255,255,255,.07);
+        }
+
+        .terminal-symbol {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+
+        .symbol-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            display: grid;
+            place-items: center;
+            background: rgba(25,230,140,.1);
+            color: #19e68c;
+            font-weight: 800;
+        }
+
+        .symbol-name {
+            font-weight: 800;
+            font-size: 14px;
+        }
+
+        .symbol-sub {
+            color: rgba(255,255,255,.38);
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        .market-live {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #19e68c;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .market-live i {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #19e68c;
+            box-shadow: 0 0 12px rgba(25,230,140,.8);
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            padding: 23px 4px 18px;
+        }
+
+        .price {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 31px;
+            font-weight: 700;
+            letter-spacing: -.04em;
+        }
+
+        .price-change {
+            color: #19e68c;
+            font-size: 13px;
+            font-weight: 700;
+            padding-bottom: 4px;
+        }
+
+        .chart-area {
+            height: 265px;
+            position: relative;
+            border: 1px solid rgba(255,255,255,.05);
+            border-radius: 16px;
+            overflow: hidden;
+            background:
+                linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+            background-size: 45px 45px;
+        }
+
+        .chart-line {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .chart-line polyline {
+            fill: none;
+            stroke: #19e68c;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 0 6px rgba(25,230,140,.45));
+        }
+
+        .chart-fill {
+            fill: url(#areaGradient);
+            opacity: .35;
+        }
+
+        .chart-label {
+            position: absolute;
+            right: 12px;
+            top: 14px;
+            font-size: 9px;
+            color: rgba(255,255,255,.3);
+            letter-spacing: .08em;
+        }
+
+        .chart-price {
+            position: absolute;
+            right: 0;
+            top: 34%;
+            transform: translateY(-50%);
+            padding: 5px 8px;
+            border-radius: 5px 0 0 5px;
+            background: #19e68c;
+            color: #04110a;
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .terminal-bottom {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 13px;
+        }
+
+        .terminal-stat {
+            padding: 11px;
+            border-radius: 11px;
+            background: rgba(255,255,255,.035);
+            border: 1px solid rgba(255,255,255,.045);
+        }
+
+        .terminal-stat span {
+            display: block;
+            color: rgba(255,255,255,.32);
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            margin-bottom: 5px;
+        }
+
+        .terminal-stat strong {
+            font-size: 12px;
+        }
+
+        .terminal-stat.green strong {
+            color: #19e68c;
+        }
+
+        .section {
+            padding: 110px 0;
+        }
+
+        .section-heading {
+            max-width: 700px;
+            margin-bottom: 50px;
+        }
+
+        .eyebrow {
+            color: #19e68c;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .14em;
+            margin-bottom: 13px;
+        }
+
+        .section-heading h2 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(34px, 5vw, 54px);
+            letter-spacing: -.045em;
+            margin: 0 0 15px;
+        }
+
+        .section-heading p {
+            color: rgba(255,255,255,.48);
+            line-height: 1.7;
+        }
+
+        .academy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .academy-card {
+            position: relative;
+            min-height: 220px;
+            padding: 27px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,.07);
+            background: rgba(255,255,255,.025);
+            overflow: hidden;
+            transition: transform .3s ease, border-color .3s ease, background .3s ease;
+        }
+
+        .academy-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(25,230,140,.25);
+            background: rgba(25,230,140,.035);
+        }
+
+        .academy-number {
+            position: absolute;
+            top: 20px;
+            right: 22px;
+            font-family: "Space Grotesk", sans-serif;
+            color: rgba(255,255,255,.06);
+            font-size: 54px;
+            font-weight: 700;
+        }
+
+        .academy-icon {
+            width: 47px;
+            height: 47px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            background: rgba(25,230,140,.08);
+            color: #19e68c;
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .academy-card h3 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 19px;
+            margin: 0 0 10px;
+        }
+
+        .academy-card p {
+            color: rgba(255,255,255,.43);
+            font-size: 13px;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .quiz-section {
+            position: relative;
+            background:
+                radial-gradient(circle at 15% 30%, rgba(25,230,140,.055), transparent 28%),
+                radial-gradient(circle at 85% 70%, rgba(71,120,255,.045), transparent 30%);
+        }
+
+        .quiz-shell {
+            max-width: 920px;
+            margin: auto;
+        }
+
+        .quiz-container {
+            border: 1px solid rgba(255,255,255,.08);
+            background: rgba(255,255,255,.025);
+            border-radius: 24px;
+            padding: 22px;
+            box-shadow: 0 30px 80px rgba(0,0,0,.28);
+        }
+
+        .quiz-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 18px;
+        }
+
+        #quiz-category {
+            color: #19e68c;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        #quiz-progress-text {
+            color: rgba(255,255,255,.38);
+            font-size: 12px;
+        }
+
+        .progress {
+            width: 100%;
+            height: 5px;
+            border-radius: 999px;
+            overflow: hidden;
+            background: rgba(255,255,255,.07);
+            margin-bottom: 25px;
+        }
+
+        #progress-fill {
+            width: 0;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #19e68c, #62ffb8);
+            box-shadow: 0 0 16px rgba(25,230,140,.4);
+            transition: width .35s ease;
+        }
+
+        .quiz-card {
+            padding: 35px;
+            border-radius: 19px;
+            background: rgba(0,0,0,.18);
+            border: 1px solid rgba(255,255,255,.055);
+        }
+
+        #question {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(23px, 3vw, 31px);
+            line-height: 1.25;
+            letter-spacing: -.025em;
+            margin: 0 0 25px;
+        }
+
+        #answer-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .answer-option {
+            width: 100%;
+            text-align: left;
+            padding: 17px 18px;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 13px;
+            background: rgba(255,255,255,.025);
+            color: rgba(255,255,255,.78);
+            cursor: pointer;
+            transition: all .2s ease;
+        }
+
+        .answer-option:hover {
+            border-color: rgba(25,230,140,.3);
+            background: rgba(25,230,140,.04);
+            transform: translateX(3px);
+        }
+
+        .answer-option.correct {
+            border-color: rgba(25,230,140,.5);
+            background: rgba(25,230,140,.08);
+            color: #19e68c;
+        }
+
+        .answer-option.wrong {
+            border-color: rgba(255,91,110,.45);
+            background: rgba(255,91,110,.07);
+            color: #ff7b89;
+        }
+
+        #explanation {
+            margin-top: 18px;
+            padding: 17px;
+            border-radius: 13px;
+            border: 1px solid rgba(255,255,255,.06);
+            background: rgba(255,255,255,.025);
+        }
+
+        #explanation-text {
+            color: rgba(255,255,255,.55);
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        #next-question {
+            margin-top: 20px;
+            width: 100%;
+            min-height: 52px;
+            border: 0;
+            border-radius: 13px;
+            background: #19e68c;
+            color: #03100a;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        #next-question:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(25,230,140,.18);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .stat-box {
+            padding: 18px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,.06);
+            background: rgba(255,255,255,.02);
+        }
+
+        .stat-box small {
+            display: block;
+            color: rgba(255,255,255,.35);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            margin-bottom: 7px;
+        }
+
+        .stat-box strong {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 22px;
+        }
+
+        #results {
+            display: none;
+            margin-top: 25px;
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid rgba(25,230,140,.14);
+            background:
+                radial-gradient(circle at 50% 0%, rgba(25,230,140,.09), transparent 45%),
+                rgba(255,255,255,.025);
+            text-align: center;
+        }
+
+        #result-badge {
+            width: 72px;
+            height: 72px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: rgba(25,230,140,.08);
+            border: 1px solid rgba(25,230,140,.2);
+            color: #19e68c;
+            font-size: 27px;
+        }
+
+        #result-score {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 54px;
+            font-weight: 700;
+            letter-spacing: -.05em;
+        }
+
+        #result-title {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 27px;
+            margin: 8px 0;
+        }
+
+        #result-description {
+            max-width: 620px;
+            margin: auto;
+            color: rgba(255,255,255,.48);
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        #recommendations {
+            max-width: 650px;
+            margin: 25px auto;
+            text-align: left;
+        }
+
+        .recommendation-item {
+            padding: 13px 15px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(255,255,255,.06);
+            border-radius: 11px;
+            background: rgba(255,255,255,.025);
+            color: rgba(255,255,255,.58);
+            font-size: 13px;
+        }
+
+        #restart-quiz {
+            min-height: 48px;
+            padding: 0 22px;
+            border: 1px solid rgba(25,230,140,.3);
+            border-radius: 12px;
+            background: rgba(25,230,140,.07);
+            color: #19e68c;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .about-card {
+            padding: 35px;
+            border: 1px solid rgba(255,255,255,.07);
+            background: rgba(255,255,255,.025);
+            border-radius: 22px;
+        }
+
+        .about-card h3 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 28px;
+            margin: 0 0 15px;
+        }
+
+        .about-card p {
+            color: rgba(255,255,255,.46);
+            line-height: 1.75;
+            font-size: 14px;
+        }
+
+        .authors {
+            display: grid;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 13px;
+            border-radius: 13px;
+            background: rgba(255,255,255,.03);
+            border: 1px solid rgba(255,255,255,.05);
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 11px;
+            background: rgba(25,230,140,.09);
+            color: #19e68c;
+            font-weight: 800;
+        }
+
+        .author strong {
+            font-size: 13px;
+        }
+
+        .author small {
+            display: block;
+            color: rgba(255,255,255,.32);
+            font-size: 10px;
+            margin-top: 3px;
+        }
+
+        .disclaimer {
+            margin-top: 20px;
+            padding: 14px;
+            border-radius: 11px;
+            background: rgba(255,255,255,.02);
+            color: rgba(255,255,255,.3);
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .academy-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .section {
+                padding: 75px 0;
+            }
+
+            .hero h1 {
+                font-size: 47px;
+            }
+
+            .academy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quiz-card {
+                padding: 22px;
+            }
+
+            .terminal-bottom {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quiz-header {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 <!-- =========================================================
-     BACKGROUND
-========================================================= -->
-
-<div class="background-effects">
-
-    <div class="glow glow-one"></div>
-    <div class="glow glow-two"></div>
-    <div class="glow glow-three"></div>
-
-</div>
-
-
-<!-- =========================================================
      HEADER
-========================================================= -->
+     ========================================================= -->
 
 <header class="site-header">
+    <div class="container header-inner">
 
-    <div class="container header-container">
+        <a href="#top" class="logo">
+            <span class="logo-mark">T</span>
 
-        <!-- LOGO -->
-
-        <a
-            href="#home"
-            class="logo"
-            aria-label="Trade Academy"
-        >
-
-            <div class="logo-mark">
-                TA
-            </div>
-
-            <div class="logo-text">
-
-                <strong>
-                    TRADE
-                </strong>
-
-                <span>
-                    ACADEMY
-                </span>
-
-            </div>
-
+            <span class="logo-text">
+                <strong>TRADE</strong>
+                <span>ACADEMY</span>
+            </span>
         </a>
 
-
-        <!-- NAVIGATION -->
-
-        <nav
-            class="main-nav"
-            id="nav-menu"
-        >
-
-            <a
-                href="#home"
-                class="nav-link"
-            >
-                Главная
-            </a>
-
-            <a
-                href="#learn"
-                class="nav-link"
-            >
-                Обучение
-            </a>
-
-            <a
-                href="#quiz"
-                class="nav-link"
-            >
-                Тест
-            </a>
-
-            <a
-                href="#about"
-                class="nav-link"
-            >
-                О платформе
-            </a>
-
+        <nav class="main-nav">
+            <a href="#academy">Academy</a>
+            <a href="#quiz">Quiz</a>
+            <a href="#about">About</a>
         </nav>
 
-
-        <!-- HEADER ACTIONS -->
-
-        <div class="header-actions">
-
-            <!-- LANGUAGE -->
-
-            <div class="language-switcher">
-
-                <button
-                    class="language-btn active"
-                    data-language="ru"
-                    type="button"
-                >
-                    RU
-                </button>
-
-                <button
-                    class="language-btn"
-                    data-language="tj"
-                    type="button"
-                >
-                    TJ
-                </button>
-
-            </div>
-
-
-            <!-- LOGIN -->
-
+        <div class="language-switch">
             <button
-                class="login-btn"
-                id="login-btn"
-                data-login
+                class="language-btn active"
+                data-language="ru"
                 type="button"
             >
-                Войти
+                RU
             </button>
-
-
-            <!-- MOBILE MENU -->
 
             <button
-                class="menu-toggle"
-                id="menu-toggle"
+                class="language-btn"
+                data-language="tj"
                 type="button"
-                aria-label="Открыть меню"
             >
-
-                <span></span>
-                <span></span>
-                <span></span>
-
+                TJ
             </button>
-
         </div>
 
     </div>
-
 </header>
 
 
-<!-- =========================================================
-     MAIN
-========================================================= -->
-
-<main id="home">
-
+<main id="top">
 
 <!-- =========================================================
      HERO
-========================================================= -->
+     ========================================================= -->
 
-<section class="hero-section">
+<section class="hero section">
 
     <div class="container hero-grid">
-
-
-        <!-- HERO TEXT -->
 
         <div class="hero-content">
 
             <div class="hero-badge">
-
-                <span class="status-dot"></span>
-
-                ОБРАЗОВАТЕЛЬНАЯ ПЛАТФОРМА
-
+                <span class="hero-badge-dot"></span>
+                Interactive Trading Academy
             </div>
 
-
-            <h1 class="hero-title">
-
-                Научись понимать рынок,
-                <span>
-                    а не угадывать его.
-                </span>
-
+            <h1>
+                Learn.<br>
+                Analyze.<br>
+                <span>Trade Smarter.</span>
             </h1>
 
-
-            <p class="hero-description">
-
-                Trade Academy помогает разобраться
-                в основах трейдинга, техническом анализе,
-                управлении рисками и торговой психологии.
-
+            <p class="hero-text">
+                Системное обучение трейдингу от базовых понятий
+                до технического анализа, риск-менеджмента,
+                психологии и практической проверки знаний.
             </p>
 
+            <div class="hero-actions">
 
-            <div class="hero-buttons">
-
-                <a
-                    href="#quiz"
-                    class="primary-btn"
+                <button
+                    class="primary-btn start-quiz"
                     id="start-quiz"
+                    data-start-quiz
+                    type="button"
                 >
+                    Начать обучение →
+                </button>
 
-                    Начать обучение
-
-                    <span>
-                        →
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="#learn"
-                    class="secondary-btn"
-                >
-
-                    Изучить темы
-
+                <a href="#academy" class="secondary-btn">
+                    Изучить программу
                 </a>
 
             </div>
 
-
-            <!-- TRUST -->
-
-            <div class="hero-trust">
-
-                <div class="trust-item">
-
-                    <strong>
-                        30+
-                    </strong>
-
-                    <span>
-                        вопросов
-                    </span>
-
-                </div>
-
-
-                <div class="trust-line"></div>
-
-
-                <div class="trust-item">
-
-                    <strong>
-                        10+
-                    </strong>
-
-                    <span>
-                        тем
-                    </span>
-
-                </div>
-
-
-                <div class="trust-line"></div>
-
-
-                <div class="trust-item">
-
-                    <strong>
-                        100%
-                    </strong>
-
-                    <span>
-                        бесплатно
-                    </span>
-
-                </div>
-
+            <div class="hero-note">
+                30 вопросов · 10 направлений · мгновенный результат
             </div>
 
         </div>
 
 
-        <!-- =================================================
-             TRADING VISUAL
-        ================================================== -->
+        <!-- TRADING TERMINAL -->
 
-        <div class="trading-terminal">
+        <div class="terminal">
 
-            <div class="terminal-window">
+            <div class="terminal-top">
 
+                <div class="terminal-symbol">
 
-                <!-- TERMINAL HEADER -->
-
-                <div class="terminal-header">
-
-                    <div class="terminal-title">
-
-                        <span class="terminal-dot"></span>
-
-                        XAU/USD
-
+                    <div class="symbol-icon">
+                        $
                     </div>
 
-                    <div class="terminal-price">
+                    <div>
+                        <div class="symbol-name">
+                            EUR / USD
+                        </div>
 
-                        $2,658.42
-
+                        <div class="symbol-sub">
+                            FOREX · 1H
+                        </div>
                     </div>
 
                 </div>
 
-
-                <!-- CHART -->
-
-                <div class="chart-area">
-
-                    <div class="chart-grid"></div>
-
-
-                    <div class="price-label price-top">
-                        2,670
-                    </div>
-
-                    <div class="price-label price-middle">
-                        2,658
-                    </div>
-
-                    <div class="price-label price-bottom">
-                        2,645
-                    </div>
-
-
-                    <svg
-                        class="chart-svg"
-                        viewBox="0 0 600 300"
-                        preserveAspectRatio="none"
-                        aria-label="Trading chart"
-                    >
-
-                        <polyline
-                            points="
-                            0,220
-                            40,205
-                            80,215
-                            120,180
-                            160,195
-                            200,155
-                            240,170
-                            280,125
-                            320,145
-                            360,105
-                            400,120
-                            440,90
-                            480,110
-                            520,70
-                            560,82
-                            600,48
-                            "
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="4"
-                            vector-effect="non-scaling-stroke"
-                        />
-
-                    </svg>
-
-
-                    <div class="chart-indicator">
-
-                        <span></span>
-
-                        BUY
-
-                    </div>
-
+                <div class="market-live">
+                    <i></i>
+                    MARKET OPEN
                 </div>
 
-
-                <!-- TERMINAL FOOTER -->
-
-                <div class="terminal-footer">
-
-                    <div>
-
-                        <small>
-                            Entry
-                        </small>
-
-                        <strong>
-                            2,650.20
-                        </strong>
-
-                    </div>
+            </div>
 
 
-                    <div>
+            <div class="price-row">
 
-                        <small>
-                            Stop Loss
-                        </small>
+                <div class="price">
+                    1.17482
+                </div>
 
-                        <strong>
-                            2,642.00
-                        </strong>
+                <div class="price-change">
+                    +0.42%
+                </div>
 
-                    </div>
+            </div>
 
 
-                    <div>
+            <div class="chart-area">
 
-                        <small>
-                            Take Profit
-                        </small>
+                <div class="chart-label">
+                    EURUSD · 1H
+                </div>
 
-                        <strong>
-                            2,675.00
-                        </strong>
+                <svg
+                    class="chart-line"
+                    viewBox="0 0 700 265"
+                    preserveAspectRatio="none"
+                >
 
-                    </div>
+                    <defs>
 
+                        <linearGradient
+                            id="areaGradient"
+                            x1="0"
+                            y1="0"
+                            x2="0"
+                            y2="1"
+                        >
+
+                            <stop
+                                offset="0%"
+                                stop-color="#19e68c"
+                                stop-opacity=".28"
+                            />
+
+                            <stop
+                                offset="100%"
+                                stop-color="#19e68c"
+                                stop-opacity="0"
+                            />
+
+                        </linearGradient>
+
+                    </defs>
+
+                    <polygon
+                        class="chart-fill"
+                        points="
+                        0,220
+                        45,210
+                        75,225
+                        110,190
+                        145,202
+                        180,160
+                        215,175
+                        250,135
+                        290,155
+                        330,110
+                        365,126
+                        405,96
+                        445,116
+                        485,78
+                        525,92
+                        565,58
+                        605,76
+                        650,42
+                        700,34
+                        700,265
+                        0,265
+                        "
+                    />
+
+                    <polyline
+                        points="
+                        0,220
+                        45,210
+                        75,225
+                        110,190
+                        145,202
+                        180,160
+                        215,175
+                        250,135
+                        290,155
+                        330,110
+                        365,126
+                        405,96
+                        445,116
+                        485,78
+                        525,92
+                        565,58
+                        605,76
+                        650,42
+                        700,34
+                        "
+                    />
+
+                </svg>
+
+                <div class="chart-price">
+                    1.17482
+                </div>
+
+            </div>
+
+
+            <div class="terminal-bottom">
+
+                <div class="terminal-stat">
+                    <span>Open</span>
+                    <strong>1.16992</strong>
+                </div>
+
+                <div class="terminal-stat">
+                    <span>High</span>
+                    <strong>1.17631</strong>
+                </div>
+
+                <div class="terminal-stat">
+                    <span>Low</span>
+                    <strong>1.16788</strong>
+                </div>
+
+                <div class="terminal-stat green">
+                    <span>Change</span>
+                    <strong>+0.42%</strong>
                 </div>
 
             </div>
@@ -481,69 +1020,68 @@
 
 
 <!-- =========================================================
-     FEATURES
-========================================================= -->
+     ACADEMY
+     ========================================================= -->
 
 <section
-    class="features-section"
-    id="learn"
+    class="section"
+    id="academy"
 >
 
     <div class="container">
 
-
         <div class="section-heading">
 
-            <span class="section-label">
-                ОСНОВЫ
-            </span>
+            <div class="eyebrow">
+                Trading curriculum
+            </div>
 
             <h2>
-                Что ты изучишь
+                Построй фундамент<br>
+                настоящего трейдера.
             </h2>
 
             <p>
-                От базовых понятий до практического
-                понимания торгового процесса.
+                Не просто запоминай термины. Понимай,
+                почему рынок движется, где находится риск
+                и как принимать торговые решения системно.
             </p>
 
         </div>
 
 
-        <div class="feature-grid">
+        <div class="academy-grid">
 
+            <article class="academy-card">
 
-            <!-- CARD 1 -->
+                <span class="academy-number">
+                    01
+                </span>
 
-            <article class="feature-card">
-
-                <div class="feature-icon">
-                    📈
+                <div class="academy-icon">
+                    ◈
                 </div>
 
                 <h3>
-                    BUY / SELL
+                    Основы трейдинга
                 </h3>
 
                 <p>
-                    Поймёшь разницу между покупкой
-                    и продажей и когда используются
-                    эти торговые решения.
+                    BUY, SELL, Bid, Ask, Spread, ордера,
+                    позиции и базовая структура рынка.
                 </p>
-
-                <span class="feature-number">
-                    01
-                </span>
 
             </article>
 
 
-            <!-- CARD 2 -->
+            <article class="academy-card">
 
-            <article class="feature-card">
+                <span class="academy-number">
+                    02
+                </span>
 
-                <div class="feature-icon">
-                    🛡️
+                <div class="academy-icon">
+                    ◇
                 </div>
 
                 <h3>
@@ -551,179 +1089,187 @@
                 </h3>
 
                 <p>
-                    Узнаешь, как контролировать риск,
-                    размер позиции и потенциальные
-                    потери одной сделки.
+                    Stop-Loss, размер позиции,
+                    риск на сделку и защита капитала.
                 </p>
-
-                <span class="feature-number">
-                    02
-                </span>
 
             </article>
 
 
-            <!-- CARD 3 -->
+            <article class="academy-card">
 
-            <article class="feature-card">
-
-                <div class="feature-icon">
-                    🎯
-                </div>
-
-                <h3>
-                    Stop Loss / Take Profit
-                </h3>
-
-                <p>
-                    Разберёшься, как работают
-                    Stop-Loss и Take-Profit
-                    и зачем они нужны.
-                </p>
-
-                <span class="feature-number">
+                <span class="academy-number">
                     03
                 </span>
 
-            </article>
-
-
-            <!-- CARD 4 -->
-
-            <article class="feature-card">
-
-                <div class="feature-icon">
-                    📊
+                <div class="academy-icon">
+                    ↗
                 </div>
 
                 <h3>
-                    Support / Resistance
+                    Технический анализ
                 </h3>
 
                 <p>
-                    Научишься понимать уровни поддержки
-                    и сопротивления на графике.
+                    Тренды, уровни, Support, Resistance
+                    и анализ структуры цены.
                 </p>
 
-                <span class="feature-number">
+            </article>
+
+
+            <article class="academy-card">
+
+                <span class="academy-number">
                     04
                 </span>
 
-            </article>
-
-
-            <!-- CARD 5 -->
-
-            <article class="feature-card">
-
-                <div class="feature-icon">
-                    🕯️
+                <div class="academy-icon">
+                    ◒
                 </div>
 
                 <h3>
-                    Candlestick
+                    Свечной анализ
                 </h3>
 
                 <p>
-                    Познакомишься с японскими свечами
-                    и основами свечного анализа.
+                    Читай японские свечи и изучай
+                    Price Action через поведение цены.
                 </p>
 
-                <span class="feature-number">
+            </article>
+
+
+            <article class="academy-card">
+
+                <span class="academy-number">
                     05
                 </span>
 
-            </article>
-
-
-            <!-- CARD 6 -->
-
-            <article class="feature-card">
-
-                <div class="feature-icon">
-                    🧠
+                <div class="academy-icon">
+                    ⌁
                 </div>
 
                 <h3>
-                    Trading Psychology
+                    Торговая логика
                 </h3>
 
                 <p>
-                    Узнаешь, почему дисциплина,
-                    терпение и контроль эмоций
-                    важны в торговом процессе.
+                    Формируй сценарий сделки до входа,
+                    а не принимай решения случайно.
                 </p>
-
-                <span class="feature-number">
-                    06
-                </span>
 
             </article>
 
-        </div>
 
-    </div>
+            <article class="academy-card">
 
-</section>
+                <span class="academy-number">
+                    06
+                </span>
 
+                <div class="academy-icon">
+                    ◎
+                </div>
 
-<!-- =========================================================
-     STATISTICS
-========================================================= -->
+                <h3>
+                    Психология
+                </h3>
 
-<section class="stats-section">
+                <p>
+                    Эмоции, дисциплина, FOMO, revenge
+                    trading и контроль поведения.
+                </p>
 
-    <div class="container stats-grid">
-
-
-        <div class="stat-card">
-
-            <strong>
-                30+
-            </strong>
-
-            <span>
-                вопросов
-            </span>
-
-        </div>
+            </article>
 
 
-        <div class="stat-card">
+            <article class="academy-card">
 
-            <strong>
-                10
-            </strong>
+                <span class="academy-number">
+                    07
+                </span>
 
-            <span>
-                направлений
-            </span>
+                <div class="academy-icon">
+                    $
+                </div>
 
-        </div>
+                <h3>
+                    Forex
+                </h3>
 
+                <p>
+                    Валютные пары, лоты, пункты,
+                    торговые сессии и фундаментальные факторы.
+                </p>
 
-        <div class="stat-card">
-
-            <strong>
-                3
-            </strong>
-
-            <span>
-                уровня знаний
-            </span>
-
-        </div>
+            </article>
 
 
-        <div class="stat-card">
+            <article class="academy-card">
 
-            <strong>
-                ∞
-            </strong>
+                <span class="academy-number">
+                    08
+                </span>
 
-            <span>
-                повторных попыток
-            </span>
+                <div class="academy-icon">
+                    ≋
+                </div>
+
+                <h3>
+                    Стратегии
+                </h3>
+
+                <p>
+                    Изучай торговые подходы и понимай,
+                    из чего состоит торговая система.
+                </p>
+
+            </article>
+
+
+            <article class="academy-card">
+
+                <span class="academy-number">
+                    09
+                </span>
+
+                <div class="academy-icon">
+                    ◌
+                </div>
+
+                <h3>
+                    Индикаторы
+                </h3>
+
+                <p>
+                    RSI, Moving Average, MACD и другие
+                    инструменты технического анализа.
+                </p>
+
+            </article>
+
+
+            <article class="academy-card">
+
+                <span class="academy-number">
+                    10
+                </span>
+
+                <div class="academy-icon">
+                    ✓
+                </div>
+
+                <h3>
+                    Практика
+                </h3>
+
+                <p>
+                    Проверь свои знания через интерактивный
+                    тест и получи персональные рекомендации.
+                </p>
+
+            </article>
 
         </div>
 
@@ -734,433 +1280,187 @@
 
 <!-- =========================================================
      QUIZ
-========================================================= -->
+     ========================================================= -->
 
 <section
-    class="quiz-section"
+    class="section quiz-section"
     id="quiz"
 >
 
     <div class="container">
 
-
         <div class="section-heading">
 
-            <span class="section-label">
-                KNOWLEDGE TEST
-            </span>
+            <div class="eyebrow">
+                Knowledge test
+            </div>
 
             <h2>
-                Проверь свои знания
+                Насколько хорошо<br>
+                ты понимаешь рынок?
             </h2>
 
             <p>
-                Ответь на вопросы и узнай,
-                какие темы тебе нужно улучшить.
+                Пройди 30 вопросов. После завершения
+                система покажет результат и темы,
+                которым стоит уделить больше внимания.
             </p>
 
         </div>
 
 
-        <!-- QUIZ CONTAINER -->
+        <div class="quiz-shell">
 
-        <div
-            class="quiz-container"
-            id="quiz"
-        >
+            <div class="quiz-container">
 
+                <div class="quiz-header">
 
-            <!-- QUIZ HEADER -->
-
-            <div class="quiz-topbar">
-
-                <div>
-
-                    <span
-                        class="quiz-category"
-                        id="quiz-category"
-                    >
+                    <div id="quiz-category">
                         Основы трейдинга
-                    </span>
+                    </div>
 
-                    <h3
-                        id="question"
-                    >
-                        Готов начать?
+                    <div id="quiz-progress-text">
+                        Вопрос 1 из 30
+                    </div>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <div id="progress-fill"></div>
+
+                </div>
+
+
+                <div class="quiz-card">
+
+                    <h3 id="question">
+                        Готов начать проверку знаний?
                     </h3>
 
-                </div>
+
+                    <div id="answer-list">
+
+                        <button
+                            class="answer-option"
+                            type="button"
+                        >
+                            Нажми «Начать обучение»
+                        </button>
+
+                    </div>
 
 
-                <div class="quiz-progress-info">
-
-                    <strong
-                        id="quiz-progress-text"
+                    <div
+                        id="explanation"
+                        style="display:none;"
                     >
-                        1 / 30
-                    </strong>
 
-                </div>
+                        <div id="explanation-text"></div>
 
-            </div>
-
-
-            <!-- PROGRESS -->
-
-            <div class="progress-bar">
-
-                <div
-                    class="progress-fill"
-                    id="progress-fill"
-                    style="width: 0%"
-                ></div>
-
-            </div>
-
-
-            <!-- ANSWERS -->
-
-            <div
-                class="answer-list"
-                id="answer-list"
-            >
-
-                <!-- JavaScript inserts answers -->
-
-            </div>
-
-
-            <!-- EXPLANATION -->
-
-            <div
-                class="explanation"
-                id="explanation"
-                hidden
-            >
-
-                <div class="explanation-icon">
-                    💡
-                </div>
-
-                <div>
-
-                    <strong>
-                        Объяснение
-                    </strong>
-
-                    <p id="explanation-text"></p>
-
-                </div>
-
-            </div>
-
-
-            <!-- NEXT -->
-
-            <button
-                class="primary-btn next-question"
-                id="next-question"
-                type="button"
-                disabled
-            >
-
-                Следующий вопрос →
-
-            </button>
-
-
-            <!-- QUIZ STATS -->
-
-            <div class="quiz-stats">
-
-                <div>
-
-                    <span>
-                        Баллы
-                    </span>
-
-                    <strong id="current-score">
-                        0
-                    </strong>
-
-                </div>
-
-
-                <div>
-
-                    <span>
-                        Отвечено
-                    </span>
-
-                    <strong id="answered-count">
-                        0
-                    </strong>
-
-                </div>
-
-
-                <div>
-
-                    <span>
-                        Точность
-                    </span>
-
-                    <strong id="accuracy">
-                        0%
-                    </strong>
-
-                </div>
-
-
-                <div>
-
-                    <span>
-                        Всего
-                    </span>
-
-                    <strong id="total-questions">
-                        30
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             RESULTS
-        ================================================== -->
-
-        <div
-            class="results-container"
-            id="results"
-            hidden
-        >
-
-            <div class="result-badge" id="result-badge">
-                🏆
-            </div>
-
-
-            <span class="section-label">
-                РЕЗУЛЬТАТ
-            </span>
-
-
-            <h2 id="result-title">
-                Твой результат
-            </h2>
-
-
-            <div class="result-score">
-
-                <strong id="result-score">
-                    0%
-                </strong>
-
-            </div>
-
-
-            <p
-                id="result-description"
-                class="result-description"
-            >
-                Здесь появится описание твоего
-                уровня знаний.
-            </p>
-
-
-            <!-- RECOMMENDATIONS -->
-
-            <div class="recommendations-box">
-
-                <h3>
-                    📚 Что стоит повторить
-                </h3>
-
-                <div
-                    id="recommendations"
-                    class="recommendations"
-                >
-
-                    <!-- JavaScript -->
-
-                </div>
-
-            </div>
-
-
-            <button
-                class="primary-btn"
-                id="restart-quiz"
-                type="button"
-            >
-
-                Пройти тест снова
-
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     PROFILE PREVIEW
-========================================================= -->
-
-<section class="profile-section">
-
-    <div class="container">
-
-
-        <div class="profile-preview">
-
-            <div class="profile-preview-content">
-
-                <span class="section-label">
-                    PERSONAL ACCOUNT
-                </span>
-
-                <h2>
-                    Твой прогресс —
-                    <span>в твоём профиле.</span>
-                </h2>
-
-                <p>
-                    После подключения настоящей авторизации
-                    твои результаты, достижения и прогресс
-                    будут доступны с любого устройства.
-                </p>
-
-
-                <div class="profile-features">
-
-                    <div>
-                        <span>✓</span>
-                        Личный профиль
                     </div>
 
-                    <div>
-                        <span>✓</span>
-                        История результатов
-                    </div>
 
-                    <div>
-                        <span>✓</span>
-                        Сохранение прогресса
-                    </div>
-
-                    <div>
-                        <span>✓</span>
-                        Google / Email / Telegram
-                    </div>
+                    <button
+                        id="next-question"
+                        type="button"
+                        style="display:none;"
+                    >
+                        Следующий вопрос →
+                    </button>
 
                 </div>
 
 
-                <button
-                    class="primary-btn"
-                    data-login
-                    type="button"
-                >
+                <!-- LIVE STATS -->
 
-                    Создать профиль
+                <div class="stats-grid">
 
-                </button>
+                    <div class="stat-box">
 
-            </div>
+                        <small>
+                            Score
+                        </small>
 
-
-            <div class="profile-card">
-
-                <div class="profile-card-header">
-
-                    <div class="demo-avatar">
-                        TA
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Твой профиль
+                        <strong id="current-score">
+                            0
                         </strong>
 
-                        <span>
-                            Trade Academy
-                        </span>
+                    </div>
+
+
+                    <div class="stat-box">
+
+                        <small>
+                            Questions
+                        </small>
+
+                        <strong id="total-questions">
+                            30
+                        </strong>
 
                     </div>
 
-                </div>
+
+                    <div class="stat-box">
+
+                        <small>
+                            Answered
+                        </small>
+
+                        <strong id="answered-count">
+                            0
+                        </strong>
+
+                    </div>
 
 
-                <div class="profile-progress">
+                    <div class="stat-box">
 
-                    <div class="profile-progress-header">
+                        <small>
+                            Accuracy
+                        </small>
 
-                        <span>
-                            Прогресс обучения
-                        </span>
-
-                        <strong>
+                        <strong id="accuracy">
                             0%
                         </strong>
 
                     </div>
 
-                    <div class="profile-progress-bar">
-
-                        <span
-                            style="width: 0%"
-                        ></span>
-
-                    </div>
-
                 </div>
 
 
-                <div class="profile-mini-stats">
+                <!-- RESULTS -->
 
-                    <div>
+                <div id="results">
 
-                        <strong>
-                            0
-                        </strong>
-
-                        <span>
-                            Тестов
-                        </span>
-
+                    <div id="result-badge">
+                        ✓
                     </div>
 
-                    <div>
-
-                        <strong>
-                            0%
-                        </strong>
-
-                        <span>
-                            Точность
-                        </span>
-
+                    <div id="result-score">
+                        0 / 30
                     </div>
 
-                    <div>
+                    <h3 id="result-title">
+                        Результат
+                    </h3>
 
-                        <strong>
-                            0
-                        </strong>
+                    <p id="result-description">
+                        Заверши тест, чтобы получить результат.
+                    </p>
 
-                        <span>
-                            Дней
-                        </span>
 
-                    </div>
+                    <div id="recommendations"></div>
+
+
+                    <button
+                        id="restart-quiz"
+                        type="button"
+                    >
+                        Пройти заново
+                    </button>
 
                 </div>
 
@@ -1175,43 +1475,110 @@
 
 <!-- =========================================================
      ABOUT
-========================================================= -->
+     ========================================================= -->
 
 <section
-    class="about-section"
+    class="section"
     id="about"
 >
 
-    <div class="container about-grid">
+    <div class="container">
+
+        <div class="about-grid">
+
+            <div class="about-card">
+
+                <div class="eyebrow">
+                    About academy
+                </div>
+
+                <h3>
+                    Trade Academy
+                </h3>
+
+                <p>
+                    Trade Academy создана как интерактивная
+                    образовательная платформа для тех,
+                    кто хочет разобраться в трейдинге
+                    с самого начала.
+                </p>
+
+                <p>
+                    Главная идея — не обещать лёгкие деньги,
+                    а дать базовое понимание рынка,
+                    управления рисками, анализа и дисциплины.
+                </p>
+
+                <div class="disclaimer">
+                    Trade Academy является образовательным
+                    проектом. Материалы сайта не являются
+                    финансовой рекомендацией или гарантией
+                    прибыли. Торговля финансовыми инструментами
+                    связана с риском потери капитала.
+                </div>
+
+            </div>
 
 
-        <div>
+            <div class="about-card">
 
-            <span class="section-label">
-                О ПРОЕКТЕ
-            </span>
+                <div class="eyebrow">
+                    Project creators
+                </div>
 
-            <h2>
-                Образование прежде
-                всего.
-            </h2>
+                <h3>
+                    Built with purpose.
+                </h3>
 
-        </div>
+                <p>
+                    Проект разработан с фокусом на понятное
+                    обучение, практику и современный
+                    пользовательский интерфейс.
+                </p>
 
 
-        <div>
+                <div class="authors">
 
-            <p>
-                Trade Academy создана как образовательная
-                платформа для тех, кто хочет разобраться
-                в трейдинге с самого начала.
-            </p>
+                    <div class="author">
 
-            <p>
-                Здесь нет обещаний лёгких денег.
-                Основная цель — понимание рынка,
-                риск-менеджмент, дисциплина и практика.
-            </p>
+                        <div class="author-avatar">
+                            J
+                        </div>
+
+                        <div>
+                            <strong>
+                                JABORZODA
+                            </strong>
+
+                            <small>
+                                Co-creator · Developer
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="author">
+
+                        <div class="author-avatar">
+                            M
+                        </div>
+
+                        <div>
+                            <strong>
+                                MUZAFARZODA
+                            </strong>
+
+                            <small>
+                                Co-creator
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -1219,67 +1586,35 @@
 
 </section>
 
-
 </main>
 
 
 <!-- =========================================================
      FOOTER
-========================================================= -->
+     ========================================================= -->
 
 <footer class="site-footer">
 
-    <div class="container footer-container">
+    <div class="container">
 
+        <div class="footer-inner">
 
-        <div class="footer-brand">
+            <div class="logo">
 
-            <div class="logo-mark">
-                TA
-            </div>
+                <span class="logo-mark">
+                    T
+                </span>
 
-            <div>
-
-                <strong>
-                    TRADE ACADEMY
-                </strong>
-
-                <p>
-                    Образовательная платформа
-                    по трейдингу.
-                </p>
+                <span class="logo-text">
+                    <strong>TRADE</strong>
+                    <span>ACADEMY</span>
+                </span>
 
             </div>
 
-        </div>
-
-
-        <div class="footer-center">
-
-            <span>
-                © 2026 Trade Academy
-            </span>
-
-            <span>
-                JABORZODA and MUZAFARZODA
-            </span>
-
-        </div>
-
-
-        <div class="footer-links">
-
-            <a href="#home">
-                Главная
-            </a>
-
-            <a href="#learn">
-                Обучение
-            </a>
-
-            <a href="#quiz">
-                Тест
-            </a>
+            <div class="footer-copy">
+                © 2026 JABORZODA and MUZAFARZODA
+            </div>
 
         </div>
 
@@ -1289,24 +1624,10 @@
 
 
 <!-- =========================================================
-     NOTIFICATIONS
-========================================================= -->
+     SCRIPT
+     ========================================================= -->
 
-<div
-    id="notifications"
-    aria-live="polite"
-></div>
-
-
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-
-<script
-    src="script.js"
-    defer
-></script>
-
+<script src="script.js" defer></script>
 
 </body>
 </html>
