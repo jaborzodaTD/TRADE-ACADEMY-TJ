@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="tg" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TRADE ACADEMY — Платформаи таълимии трейдинг</title>
+    <meta name="description" content="Платформаи муосири таълимӣ ва симулятори трейдинг аз JABORZODA ва MUZAFARZODA.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Disclaimer Header Bar -->
+    <div class="top-disclaimer">
+        <span>⚠️ <strong data-i18n="disclaimer_title">TRADE ACADEMY</strong> — <span data-i18n="disclaimer_text">платформаи таълимӣ аст. Demo trading танҳо барои омӯзиш буда, тавсияи молиявӣ нест.</span></span>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="brand" onclick="switchTab('home')">
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-title">TRADE ACADEMY</span>
+                    <span class="brand-sub">BY JABORZODA & MUZAFARZODA</span>
+                </div>
+            </div>
+
+            <nav class="desktop-nav">
+                <button class="nav-btn active" data-tab="home" onclick="switchTab('home')" data-i18n="nav_home">🏠 Асосӣ</button>
+                <button class="nav-btn" data-tab="courses" onclick="switchTab('courses')" data-i18n="nav_courses">📚 Курсҳо</button>
+                <button class="nav-btn" data-tab="demo" onclick="switchTab('demo')" data-i18n="nav_demo">📊 Демо Практика</button>
+                <button class="nav-btn" data-tab="journal" onclick="switchTab('journal')" data-i18n="nav_journal">📒 Журнал</button>
+                <button class="nav-btn" data-tab="plan" onclick="switchTab('plan')" data-i18n="nav_plan">📋 План</button>
+                <button class="nav-btn" data-tab="test" onclick="switchTab('test')" data-i18n="nav_test">🧠 Тест</button>
+                <button class="nav-btn" data-tab="progress" onclick="switchTab('progress')" data-i18n="nav_progress">📈 Прогресс</button>
+                <button class="nav-btn" data-tab="about" onclick="switchTab('about')" data-i18n="nav_about">ℹ️ Дар бора</button>
+            </nav>
+
+            <div class="nav-controls">
+                <div class="lang-selector">
+                    <button class="control-btn lang-btn" id="langToggleBtn" onclick="toggleLanguage()">
+                        <span id="currentLangFlag">🇹🇯</span>
+                        <span id="currentLangCode">TJ</span>
+                    </button>
+                </div>
+                <button class="control-btn theme-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle Theme">
+                    <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Content Wrapper -->
+    <main class="main-content" id="app">
+
+        <!-- TAB: HOME -->
+        <section id="tab-home" class="tab-page active">
+            <div class="hero-section">
+                <div class="hero-badge">
+                    <span class="pulse-dot"></span>
+                    <span data-i18n="hero_badge">Платформаи №1 омӯзиши трейдинг</span>
+                </div>
+                <h1 class="hero-title" data-i18n="hero_title">Трейдингро аз сифр ба таври касбӣ омӯзед</h1>
+                <p class="hero-subtitle" data-i18n="hero_subtitle">Дарсҳои амалӣ, таҳлили техникӣ, риск-менеҷмент, психология ва симулятори Demo дар як платформаи ягона.</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="switchTab('courses')" data-i18n="hero_btn_start">🚀 Оғози омӯзиш</button>
+                    <button class="btn btn-outline" onclick="switchTab('demo')" data-i18n="hero_btn_demo">📊 Демо Терминал</button>
+                </div>
+            </div>
+
+            <!-- Mini Market Ticker Terminal -->
+            <div class="market-ticker-card glass-card">
+                <div class="ticker-header">
+                    <span class="ticker-title" data-i18n="market_overview">📊 Бозори зинда (Симуляция)</span>
+                    <span class="badge badge-success" data-i18n="live_status">ONLINE</span>
+                </div>
+                <div class="ticker-grid" id="miniTickerGrid">
+                    <!-- Dynamic mini tickers -->
+                </div>
+            </div>
+
+            <!-- Key Features Grid -->
+            <div class="features-grid">
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">📚</div>
+                    <h3 data-i18n="feat_1_title">6+ Модули калон</h3>
+                    <p data-i18n="feat_1_desc">Аз асосҳои Forex ва Крипто то стратегияҳои мураккаби техникӣ.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 data-i18n="feat_2_title">Demo Графикаи Canvas</h3>
+                    <p data-i18n="feat_2_desc">Графикаи мукаммали свечаҳо бо имконияти гузоштани ордерҳои BUY/SELL.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 data-i18n="feat_3_title">Калькулятори Риск</h3>
+                    <p data-i18n="feat_3_desc">Ҳисоби дақиқи Stop Loss, Take Profit ва андозаи лот барои ҳар як сделку.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">📋</div>
+                    <h3 data-i18n="feat_4_title">Трейдинг План & Журнал</h3>
+                    <p data-i18n="feat_4_desc">Ташаккули интизом ва сабти ҳамаи сделкаҳо дар хотираи маҳаллӣ.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: COURSES -->
+        <section id="tab-courses" class="tab-page">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title" data-i18n="courses_title">Курсҳои таълимӣ</h2>
+                    <p class="section-desc" data-i18n="courses_sub">Модулҳоро пайдарпай омӯзед ва дониши худро мустаҳкам кунед.</p>
+                </div>
+            </div>
+            <div class="courses-list" id="coursesList">
+                <!-- Dynamically populated courses -->
+            </div>
+        </section>
+
+        <!-- TAB: DEMO TRADING -->
+        <section id="tab-demo" class="tab-page">
+            <div class="trading-terminal">
+                <!-- Terminal Sidebar Controls -->
+                <div class="terminal-sidebar glass-card">
+                    <div class="account-summary">
+                        <span class="label" data-i18n="demo_balance_label">Баланси Демо:</span>
+                        <div class="balance-amount" id="demoBalance">$10,000.00</div>
+                        <div class="equity-stats">
+                            <span>Equity: <strong id="demoEquity">$10,000.00</strong></span>
+                            <span>P/L: <strong id="demoPL">$0.00</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-i18n="asset_select">Инструмент:</label>
+                        <select id="assetSelect" class="form-control" onchange="changeSymbol(this.value)">
+                            <option value="EUR/USD">EUR/USD (Forex)</option>
+                            <option value="GBP/USD">GBP/USD (Forex)</option>
+                            <option value="USD/JPY">USD/JPY (Forex)</option>
+                            <option value="XAU/USD">XAU/USD (Tillo)</option>
+                            <option value="BTC/USD">BTC/USD (Crypto)</option>
+                        </select>
+                    </div>
+
+                    <div class="symbol-price-display">
+                        <span id="currentSymbolName">EUR/USD</span>
+                        <span id="currentSymbolPrice" class="price-val">1.10500</span>
+                    </div>
+
+                    <div class="order-form">
+                        <div class="form-group">
+                            <label data-i18n="pos_size">Андозаи позиция (Лот / Қисм):</label>
+                            <input type="number" id="orderLot" class="form-control" value="0.1" step="0.01" min="0.01" max="10">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Stop Loss (Points)</label>
+                                <input type="number" id="orderSL" class="form-control" value="200" placeholder="200">
+                            </div>
+                            <div class="form-group">
+                                <label>Take Profit (Points)</label>
+                                <input type="number" id="orderTP" class="form-control" value="400" placeholder="400">
+                            </div>
+                        </div>
+
+                        <div class="order-actions">
+                            <button class="btn btn-buy" onclick="executeTrade('BUY')" data-i18n="btn_buy">🟢 BUY (Харид)</button>
+                            <button class="btn btn-sell" onclick="executeTrade('SELL')" data-i18n="btn_sell">🔴 SELL (Фурӯш)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terminal Chart Canvas Container -->
+                <div class="terminal-main glass-card">
+                    <div class="chart-header">
+                        <div class="timeframe-selector">
+                            <button class="tf-btn active">M1</button>
+                            <button class="tf-btn">M5</button>
+                            <button class="tf-btn">H1</button>
+                        </div>
+                        <div class="chart-info">
+                            <span data-i18n="interactive_chart">Свечной График Live Simulation</span>
+                        </div>
+                    </div>
+                    <div class="canvas-wrapper">
+                        <canvas id="tradingChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Open Positions & History Tables -->
+            <div class="trading-tables grid-2">
+                <div class="glass-card">
+                    <h3 class="card-title" data-i18n="open_positions">Позицияҳои кушод</h3>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th data-i18n="th_asset">Инструмент</th>
+                                    <th data-i18n="th_type">Намуд</th>
+                                    <th data-i18n="th_size">Андоза</th>
+                                    <th data-i18n="th_entry">Вход</th>
+                                    <th data-i18n="th_current">Нарх</th>
+                                    <th>P/L ($)</th>
+                                    <th data-i18n="th_action">Амал</th>
+                                </tr>
+                            </thead>
+                            <tbody id="openPositionsTable">
+                                <!-- Dynamic positions -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h3 class="card-title" data-i18n="trade_history">Таърихи сделкаҳо</h3>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th data-i18n="th_asset">Инструмент</th>
+                                    <th data-i18n="th_type">Намуд</th>
+                                    <th data-i18n="th_result">Натиҷа</th>
+                                    <th>P/L ($)</th>
+                                    <th data-i18n="th_time">Вақт</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tradeHistoryTable">
+                                <!-- Dynamic history -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: TRADING JOURNAL -->
+        <section id="tab-journal" class="tab-page">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title" data-i18n="journal_title">Журнали Трейдер</h2>
+                    <p class="section-desc" data-i18n="journal_sub">Ҳар як сделкуро таҳлил кунед, хатогиҳоро сабт намоед ва интизомро афзун кунед.</p>
+                </div>
+            </div>
+
+            <div class="journal-layout grid-3">
+                <!-- Add Entry Form -->
+                <div class="glass-card journal-form-card">
+                    <h3 class="card-title" data-i18n="add_journal_entry">Сабти нав</h3>
+                    <form id="journalForm" onsubmit="saveJournalEntry(event)">
+                        <div class="form-group">
+                            <label data-i18n="th_asset">Инструмент</label>
+                            <input type="text" id="jAsset" class="form-control" placeholder="EUR/USD" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="th_type">Намуд</label>
+                            <select id="jType" class="form-control">
+                                <option value="BUY">BUY</option>
+                                <option value="SELL">SELL</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="th_result">Натиҷа ($)</label>
+                            <input type="number" id="jResult" class="form-control" placeholder="+50 ё -20" step="any" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="j_emotion">Эмоция / Ҳолат</label>
+                            <select id="jEmotion" class="form-control">
+                                <option value="Calm">😌 Ором ва мувофиқи план</option>
+                                <option value="FOMO">😱 FOMO (Тарси ақиб мондан)</option>
+                                <option value="Greed">🤑 Офкандагӣ (Греш/Ниёз)</option>
+                                <option value="Revenge">😡 Қасдгирӣ (Revenge trade)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="j_notes">Эзоҳ / Дарс</label>
+                            <textarea id="jNotes" class="form-control" rows="3" placeholder="Сабаби кушодани сделка ва хатогиҳо..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" data-i18n="btn_save_entry">💾 Сабт кардан</button>
+                    </form>
+                </div>
+
+                <!-- Journal List -->
+                <div class="glass-card journal-list-card col-span-2">
+                    <h3 class="card-title" data-i18n="j_history_title">Таърихи Журнал</h3>
+                    <div id="journalEntriesList" class="journal-entries-grid">
+                        <!-- Dynamic journal items -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: TRADING PLAN BUILDER -->
+        <section id="tab-plan" class="tab-page">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title" data-i18n="plan_title">Трейдинг План Builder</h2>
+                    <p class="section-desc" data-i18n="plan_sub">Қоидаҳои шахсии худро барои савдои беэҳсосот муқаррар кунед.</p>
+                </div>
+            </div>
+
+            <div class="glass-card plan-container">
+                <form id="planForm" onsubmit="saveTradingPlan(event)">
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label data-i18n="plan_market">Бозорҳои асосӣ:</label>
+                            <input type="text" id="planMarket" class="form-control" placeholder="Forex, Crypto, Gold">
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="plan_session">Сессияи савдо:</label>
+                            <input type="text" id="planSession" class="form-control" placeholder="London & New York">
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="plan_tf">Таймфрейми асосӣ:</label>
+                            <input type="text" id="planTF" class="form-control" placeholder="H1 барои таҳлил, M15 барои вход">
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="plan_max_risk">Макс Риск ба як сделка (%):</label>
+                            <input type="number" id="planRisk" class="form-control" placeholder="1%" value="1">
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="plan_max_daily_loss">Максималӣ зарари рӯзона ($):</label>
+                            <input type="number" id="planMaxDailyLoss" class="form-control" placeholder="100">
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="plan_max_trades">Макс шумораи сделкаҳо дар як рӯз:</label>
+                            <input type="number" id="planMaxTrades" class="form-control" placeholder="3">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-i18n="plan_rules">Қоидаҳои асосии ман (Психология & Стратегия):</label>
+                        <textarea id="planRules" class="form-control" rows="5" placeholder="1. Бе Stop Loss сделка намекушоям.&#10;2. Баъди 2 зарар савдоро манъ мекунам.&#10;3. Танҳо мувофиқи тренд амал мекунам."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" data-i18n="btn_save_plan">💾 Сабти Трейдинг План</button>
+                </form>
+            </div>
+
+            <!-- Risk Calculator Section -->
+            <div class="glass-card risk-calc-card">
+                <h3 class="card-title" data-i18n="risk_calc_title">🧮 Интерактивӣ Калькулятори Риск</h3>
+                <div class="calc-grid grid-2">
+                    <div class="calc-inputs">
+                        <div class="form-group">
+                            <label>Баланси суратҳисоб ($):</label>
+                            <input type="number" id="calcBalance" class="form-control" value="10000" oninput="calculateRisk()">
+                        </div>
+                        <div class="form-group">
+                            <label>Риск ба як сделка (%):</label>
+                            <input type="number" id="calcRiskPercent" class="form-control" value="1" step="0.5" oninput="calculateRisk()">
+                        </div>
+                        <div class="form-group">
+                            <label>Масофаи Stop Loss (Points/Pips):</label>
+                            <input type="number" id="calcSLPoints" class="form-control" value="200" oninput="calculateRisk()">
+                        </div>
+                    </div>
+                    <div class="calc-results">
+                        <div class="calc-res-item">
+                            <span data-i18n="calc_risk_amt">Манбаи риск ($):</span>
+                            <strong id="resRiskAmount" class="text-danger">$100.00</strong>
+                        </div>
+                        <div class="calc-res-item">
+                            <span data-i18n="calc_lot_size">Андозаи лоти тавсияшаванда:</span>
+                            <strong id="resLotSize" class="text-primary">0.05 Lot</strong>
+                        </div>
+                        <p class="calc-tip" data-i18n="calc_tip">💡 Огоҳӣ: Ҳеҷ гоҳ дар як сделка аз 1-2% бештари баланси худро ба хатар нагузоред!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: TEST / QUIZ -->
+        <section id="tab-test" class="tab-page">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title" data-i18n="test_title">Тести имтиҳонӣ</h2>
+                    <p class="section-desc" data-i18n="test_sub">Дониши худро аз рӯи дарсҳо санҷед ва дараҷаи худро муайян кунед.</p>
+                </div>
+            </div>
+
+            <div class="quiz-container glass-card" id="quizContainer">
+                <!-- Quiz content rendered dynamically -->
+            </div>
+        </section>
+
+        <!-- TAB: PROGRESS DASHBOARD -->
+        <section id="tab-progress" class="tab-page">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title" data-i18n="progress_title">Дастгоҳи Прогресс ва Натиҷаҳо</h2>
+                    <p class="section-desc" data-i18n="progress_sub">Омори омӯзиш, натиҷаҳои Demo ва дастовардҳои худро пайгирӣ кунед.</p>
+                </div>
+            </div>
+
+            <div class="stats-overview-grid">
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">🎓</div>
+                    <div class="stat-data">
+                        <span class="stat-value" id="statLessonsComp">0 / 18</span>
+                        <span class="stat-label" data-i18n="stat_lessons">Дарсҳои хатмшуда</span>
+                    </div>
+                </div>
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">🧠</div>
+                    <div class="stat-data">
+                        <span class="stat-value" id="statTestScore">0%</span>
+                        <span class="stat-label" data-i18n="stat_test">Натиҷаи беҳтарини тест</span>
+                    </div>
+                </div>
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-data">
+                        <span class="stat-value" id="statWinRate">0%</span>
+                        <span class="stat-label" data-i18n="stat_winrate">Win Rate (Демо)</span>
+                    </div>
+                </div>
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-data">
+                        <span class="stat-value" id="statTotalPL">$0.00</span>
+                        <span class="stat-label" data-i18n="stat_total_pl">Умумии P/L</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements Section -->
+            <div class="glass-card achievements-section">
+                <h3 class="card-title" data-i18n="achieve_title">🏆 Дастовардҳо (Achievements)</h3>
+                <div class="achievements-grid" id="achievementsGrid">
+                    <!-- Dynamic achievements -->
+                </div>
+            </div>
+
+            <!-- Reset Data Control -->
+            <div class="danger-zone glass-card">
+                <h3 class="text-danger" data-i18n="reset_title">⚠️ Тоза кардани маълумот</h3>
+                <p data-i18n="reset_desc">Ҳамаи прогресси омӯзиш, баланси Демо ва Журнал пурра тоза карда мешаванд.</p>
+                <button class="btn btn-danger" onclick="confirmResetAllData()" data-i18n="btn_reset">🗑️ Тоза кардани ҳама маълумот</button>
+            </div>
+        </section>
+
+        <!-- TAB: ABOUT -->
+        <section id="tab-about" class="tab-page">
+            <div class="glass-card about-card">
+                <div class="about-header">
+                    <div class="about-logo">TRADE ACADEMY</div>
+                    <span class="badge badge-primary">v2.5 PRO MAX</span>
+                </div>
+                <p class="about-lead" data-i18n="about_lead">
+                    TRADE ACADEMY — лоиҳаи касбии таълимӣ барои омӯзиши бозорҳои молиявӣ, таҳлили техникӣ ва психологияи савдо мебошад.
+                </p>
+
+                <div class="authors-box">
+                    <h4 data-i18n="authors_title">Муаллифон ва Муассисон:</h4>
+                    <div class="authors-list">
+                        <div class="author-item">
+                            <span class="author-avatar">👤</span>
+                            <div>
+                                <strong>JABORZODA</strong>
+                                <small>Co-Founder & Lead Developer</small>
+                            </div>
+                        </div>
+                        <div class="author-item">
+                            <span class="author-avatar">👤</span>
+                            <div>
+                                <strong>MUZAFARZODA</strong>
+                                <small>Co-Founder & Trading Strategist</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-disclaimer-box">
+                    <h4 data-i18n="financial_disclaimer_title">⚠️ Огоҳӣ аз хатарҳо (Financial Disclaimer)</h4>
+                    <p data-i18n="financial_disclaimer_text">
+                        TRADE ACADEMY лоиҳаи танҳо таълимӣ аст. Demo trading дар платформа савдои ҳақиқӣ набуда, ягон пули реалӣ истифода намешавад. Савдо дар бозорҳои молиявии реалӣ хатари баланди аз даст додани капиталро дорад. Ҳеҷ як маълумоти ин сайт ҳамчун маслиҳати молиявӣ ба ҳисоб намеравад.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Lesson View Modal -->
+    <div class="modal-overlay" id="lessonModal">
+        <div class="modal-content glass-card">
+            <button class="modal-close" onclick="closeLessonModal()">&times;</button>
+            <div id="lessonModalBody">
+                <!-- Dynamically filled lesson content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav class="bottom-nav">
+        <button class="bottom-nav-btn active" data-tab="home" onclick="switchTab('home')">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label" data-i18n="nav_home">Асосӣ</span>
+        </button>
+        <button class="bottom-nav-btn" data-tab="courses" onclick="switchTab('courses')">
+            <span class="nav-icon">📚</span>
+            <span class="nav-label" data-i18n="nav_courses">Курсҳо</span>
+        </button>
+        <button class="bottom-nav-btn" data-tab="demo" onclick="switchTab('demo')">
+            <span class="nav-icon">📊</span>
+            <span class="nav-label" data-i18n="nav_demo">Демо</span>
+        </button>
+        <button class="bottom-nav-btn" data-tab="journal" onclick="switchTab('journal')">
+            <span class="nav-icon">📒</span>
+            <span class="nav-label" data-i18n="nav_journal">Журнал</span>
+        </button>
+        <button class="bottom-nav-btn" data-tab="progress" onclick="switchTab('progress')">
+            <span class="nav-icon">📈</span>
+            <span class="nav-label" data-i18n="nav_progress">Прогресс</span>
+        </button>
+    </nav>
+
+    <!-- Toast Notifications Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>© 2026 <strong>TRADE ACADEMY</strong>. Тамоми ҳуқуқҳо ҳифз шудаанд.</p>
+            <p class="authors-credit">Муаллифон: <span>JABORZODA and MUZAFARZODA</span></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
