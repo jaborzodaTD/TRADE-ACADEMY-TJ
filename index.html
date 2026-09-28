@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#070b12">
+    <meta name="description" content="TRADE ACADEMY — интерактивная академия трейдинга. Учись, тестируй знания и анализируй свой результат.">
+
+    <title>TRADE ACADEMY — JABORZODA and MUZAFARZODA</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =========================
+     APP LOADER
+========================= -->
+
+<div id="appLoader" class="app-loader">
+    <div class="loader-logo">
+        <span>TRADE</span>
+        <strong>ACADEMY</strong>
+    </div>
+
+    <div class="loader-line">
+        <div></div>
+    </div>
+
+    <p>Loading Academy...</p>
+</div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="top-header">
+
+    <div class="brand" onclick="showPage('home')">
+
+        <div class="brand-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="brand-text">
+            <strong>TRADE</strong>
+            <span>ACADEMY</span>
+        </div>
+
+    </div>
+
+
+    <div class="header-actions">
+
+        <button
+            class="icon-button"
+            id="themeButton"
+            aria-label="Theme"
+            onclick="toggleTheme()">
+            ☾
+        </button>
+
+        <button
+            class="language-button"
+            onclick="openLanguageMenu()">
+            <span id="currentLanguage">RU</span>
+            <span>⌄</span>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     LANGUAGE MENU
+========================= -->
+
+<div id="languageMenu" class="language-menu">
+
+    <button onclick="setLanguage('ru')">
+        🇷🇺 Русский
+    </button>
+
+    <button onclick="setLanguage('tj')">
+        🇹🇯 Тоҷикӣ
+    </button>
+
+    <button onclick="setLanguage('en')">
+        🇬🇧 English
+    </button>
+
+</div>
+
+
+<!-- =========================
+     MAIN APP
+========================= -->
+
+<main id="app">
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section id="homePage" class="page active">
+
+    <div class="hero">
+
+        <div class="hero-badge">
+            <span class="pulse"></span>
+            <span data-i18n="academyBadge">
+                INTERACTIVE TRADING EDUCATION
+            </span>
+        </div>
+
+        <h1 data-i18n="heroTitle">
+            Учись понимать рынок,<br>
+            а не угадывать его.
+        </h1>
+
+        <p class="hero-description" data-i18n="heroDescription">
+            Изучай основы трейдинга, проверяй свои знания
+            и получай персональный анализ своих ошибок.
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <button
+                class="primary-button"
+                onclick="startQuiz()">
+
+                <span>▶</span>
+                <span data-i18n="startLearning">
+                    Начать обучение
+                </span>
+
+            </button>
+
+
+            <button
+                class="secondary-button"
+                onclick="showPage('lessons')">
+
+                <span>▣</span>
+                <span data-i18n="viewLessons">
+                    Смотреть уроки
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <div class="hero-stats">
+
+            <div>
+                <strong id="homeQuestions">50+</strong>
+                <span data-i18n="questions">Вопросов</span>
+            </div>
+
+            <div>
+                <strong>3</strong>
+                <span data-i18n="languages">Языка</span>
+            </div>
+
+            <div>
+                <strong>6</strong>
+                <span data-i18n="categories">Категорий</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FEATURES -->
+
+    <div class="section-heading">
+
+        <div>
+            <span class="eyebrow" data-i18n="platform">PLATFORM</span>
+
+            <h2 data-i18n="whyAcademy">
+                Что ты получишь
+            </h2>
+        </div>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <article class="feature-card">
+
+            <div class="feature-icon">📚</div>
+
+            <h3 data-i18n="feature1Title">
+                Понятное обучение
+            </h3>
+
+            <p data-i18n="feature1Text">
+                Основные термины и принципы трейдинга
+                объясняются простым языком.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">🧠</div>
+
+            <h3 data-i18n="feature2Title">
+                Интерактивные тесты
+            </h3>
+
+            <p data-i18n="feature2Text">
+                Отвечай на вопросы и сразу получай
+                объяснение правильного ответа.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">📊</div>
+
+            <h3 data-i18n="feature3Title">
+                Анализ знаний
+            </h3>
+
+            <p data-i18n="feature3Text">
+                После теста система покажет твои сильные
+                и слабые стороны.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">🎯</div>
+
+            <h3 data-i18n="feature4Title">
+                Персональные рекомендации
+            </h3>
+
+            <p data-i18n="feature4Text">
+                Получай темы, которые стоит повторить
+                перед переходом дальше.
+            </p>
+
+        </article>
+
+    </div>
+
+
+    <!-- CATEGORIES -->
+
+    <div class="section-heading categories-heading">
+
+        <div>
+            <span class="eyebrow" data-i18n="curriculum">
+                CURRICULUM
+            </span>
+
+            <h2 data-i18n="learningProgram">
+                Программа обучения
+            </h2>
+        </div>
+
+    </div>
+
+
+    <div id="categoryGrid" class="category-grid"></div>
+
+
+    <!-- AUTHOR -->
+
+    <div class="author-card">
+
+        <div class="author-symbol">
+            ◆
+        </div>
+
+        <div>
+
+            <span data-i18n="createdBy">
+                Created by
+            </span>
+
+            <strong>
+                JABORZODA and MUZAFARZODA
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- DISCLAIMER -->
+
+    <div class="disclaimer">
+
+        <strong>⚠️ <span data-i18n="important">
+            Важно
+        </span></strong>
+
+        <p data-i18n="disclaimer">
+            TRADE ACADEMY предназначена исключительно
+            для образовательных целей. Материалы сайта
+            не являются финансовой рекомендацией,
+            инвестиционной рекомендацией или гарантией
+            получения прибыли.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LESSONS
+========================= -->
+
+<section id="lessonsPage" class="page">
+
+    <div class="page-header">
+
+        <button
+            class="back-button"
+            onclick="showPage('home')">
+            ←
+        </button>
+
+        <div>
+            <span class="eyebrow">EDUCATION</span>
+            <h1 data-i18n="lessonsTitle">
+                Уроки
+            </h1>
+        </div>
+
+    </div>
+
+
+    <div id="lessonsContainer"></div>
+
+</section>
+
+
+
+<!-- =========================
+     QUIZ
+========================= -->
+
+<section id="quizPage" class="page">
+
+    <div class="quiz-top">
+
+        <button
+            class="back-button"
+            onclick="confirmExitQuiz()">
+            ×
+        </button>
+
+        <div class="quiz-progress-container">
+
+            <div class="quiz-progress-text">
+
+                <span>
+                    <span data-i18n="question">
+                        Вопрос
+                    </span>
+
+                    <strong id="questionNumber">
+                        1
+                    </strong>
+                    /
+                    <span id="questionTotal">
+                        50
+                    </span>
+                </span>
+
+                <span id="quizPercent">
+                    0%
+                </span>
+
+            </div>
+
+            <div class="progress-bar">
+                <div id="quizProgress"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="quiz-category-label" id="quizCategory">
+        BASICS
+    </div>
+
+
+    <div class="quiz-card">
+
+        <div class="question-number-large" id="questionIndex">
+            01
+        </div>
+
+        <h1 id="questionText">
+            Question
+        </h1>
+
+        <div
+            id="questionHint"
+            class="question-hint">
+        </div>
+
+
+        <div
+            id="answersContainer"
+            class="answers-container">
+        </div>
+
+
+        <div
+            id="answerExplanation"
+            class="answer-explanation hidden">
+
+            <div class="explanation-icon" id="explanationIcon">
+                ✓
+            </div>
+
+            <div>
+
+                <strong id="explanationTitle">
+                    Правильно
+                </strong>
+
+                <p id="explanationText"></p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="nextQuestionButton"
+            class="primary-button full-width hidden"
+            onclick="nextQuestion()">
+
+            <span data-i18n="nextQuestion">
+                Следующий вопрос
+            </span>
+
+            <span>→</span>
+
+        </button>
+
+    </div>
+
+
+    <div class="quiz-footer">
+
+        <div>
+            🔥
+            <span data-i18n="streak">
+                Серия
+            </span>:
+
+            <strong id="currentStreak">
+                0
+            </strong>
+        </div>
+
+        <div>
+            ✓
+            <span data-i18n="correct">
+                Правильно
+            </span>:
+
+            <strong id="liveCorrect">
+                0
+            </strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     RESULTS
+========================= -->
+
+<section id="resultsPage" class="page">
+
+    <div class="results-header">
+
+        <span class="eyebrow">
+            RESULTS
+        </span>
+
+        <h1 data-i18n="yourResult">
+            Твой результат
+        </h1>
+
+        <p data-i18n="resultDescription">
+            Вот подробный анализ твоих знаний.
+        </p>
+
+    </div>
+
+
+    <div class="score-card">
+
+        <div class="score-circle">
+
+            <svg viewBox="0 0 120 120">
+
+                <circle
+                    class="score-bg"
+                    cx="60"
+                    cy="60"
+                    r="52">
+                </circle>
+
+                <circle
+                    id="scoreCircle"
+                    class="score-progress"
+                    cx="60"
+                    cy="60"
+                    r="52">
+                </circle>
+
+            </svg>
+
+            <div class="score-value">
+
+                <strong id="finalScore">
+                    0%
+                </strong>
+
+                <span data-i18n="score">
+                    результат
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="score-info">
+
+            <span class="result-level-label">
+                LEVEL
+            </span>
+
+            <h2 id="resultLevel">
+                Beginner
+            </h2>
+
+            <p id="resultMessage"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESULT STATS -->
+
+    <div class="result-stats">
+
+        <div>
+            <span>✓</span>
+            <strong id="correctAnswers">
+                0
+            </strong>
+            <small data-i18n="correctAnswers">
+                Правильных
+            </small>
+        </div>
+
+        <div>
+            <span>×</span>
+            <strong id="wrongAnswers">
+                0
+            </strong>
+            <small data-i18n="wrongAnswers">
+                Ошибок
+            </small>
+        </div>
+
+        <div>
+            <span>◷</span>
+            <strong id="quizTime">
+                0m
+            </strong>
+            <small data-i18n="time">
+                Время
+            </small>
+        </div>
+
+    </div>
+
+
+    <!-- CATEGORY ANALYSIS -->
+
+    <div class="analysis-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="eyebrow">
+                    ANALYSIS
+                </span>
+
+                <h2 data-i18n="categoryAnalysis">
+                    Анализ по категориям
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div id="categoryResults"></div>
+
+    </div>
+
+
+    <!-- RECOMMENDATIONS -->
+
+    <div class="recommendations-card">
+
+        <div class="recommendation-header">
+
+            <span>🎯</span>
+
+            <div>
+
+                <span class="eyebrow">
+                    PERSONAL PLAN
+                </span>
+
+                <h2 data-i18n="recommendations">
+                    Что тебе нужно повторить
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div id="recommendationsList"></div>
+
+    </div>
+
+
+    <div class="result-actions">
+
+        <button
+            class="primary-button"
+            onclick="startQuiz()">
+
+            ↻
+            <span data-i18n="retake">
+                Пройти снова
+            </span>
+
+        </button>
+
+
+        <button
+            class="secondary-button"
+            onclick="showPage('home')">
+
+            ←
+            <span data-i18n="backHome">
+                На главную
+            </span>
+
+        </button>
+
+    </div>
+
+
+    <div class="author-card compact">
+
+        <div class="author-symbol">
+            ◆
+        </div>
+
+        <div>
+
+            <span>TRADE ACADEMY</span>
+
+            <strong>
+                JABORZODA and MUZAFARZODA
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     PROGRESS
+========================= -->
+
+<section id="progressPage" class="page">
+
+    <div class="page-header">
+
+        <button
+            class="back-button"
+            onclick="showPage('home')">
+            ←
+        </button>
+
+        <div>
+
+            <span class="eyebrow">
+                PROGRESS
+            </span>
+
+            <h1 data-i18n="progressTitle">
+                Мой прогресс
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <div class="progress-overview">
+
+        <div class="big-progress-number">
+            <strong id="overallProgress">
+                0%
+            </strong>
+
+            <span data-i18n="overall">
+                Общий прогресс
+            </span>
+        </div>
+
+
+        <div class="progress-mini-list">
+
+            <div>
+                <span data-i18n="testsCompleted">
+                    Тестов пройдено
+                </span>
+
+                <strong id="testsCompleted">
+                    0
+                </strong>
+            </div>
+
+            <div>
+                <span data-i18n="bestScore">
+                    Лучший результат
+                </span>
+
+                <strong id="bestScore">
+                    0%
+                </strong>
+            </div>
+
+            <div>
+                <span data-i18n="totalQuestions">
+                    Вопросов решено
+                </span>
+
+                <strong id="totalQuestionsSolved">
+                    0
+                </strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="achievement-card">
+
+        <div class="achievement-icon">
+            🏆
+        </div>
+
+        <div>
+
+            <span class="eyebrow">
+                ACHIEVEMENT
+            </span>
+
+            <h2 id="achievementTitle">
+                Первый шаг
+            </h2>
+
+            <p id="achievementText">
+                Пройди свой первый тест.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="danger-button"
+        onclick="resetAllProgress()">
+
+        🗑
+        <span data-i18n="resetProgress">
+            Сбросить весь прогресс
+        </span>
+
+    </button>
+
+</section>
+
+</main>
+
+
+
+<!-- =========================
+     MOBILE NAVIGATION
+========================= -->
+
+<nav class="bottom-nav">
+
+    <button
+        class="nav-item active"
+        data-page="home"
+        onclick="showPage('home')">
+
+        <span>⌂</span>
+        <small data-i18n="navHome">
+            Главная
+        </small>
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        data-page="lessons"
+        onclick="showPage('lessons')">
+
+        <span>▣</span>
+        <small data-i18n="navLessons">
+            Уроки
+        </small>
+
+    </button>
+
+
+    <button
+        class="nav-item nav-quiz"
+        data-page="quiz"
+        onclick="startQuiz()">
+
+        <span>▶</span>
+        <small data-i18n="navQuiz">
+            Тест
+        </small>
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        data-page="progress"
+        onclick="showPage('progress')">
+
+        <span>◔</span>
+        <small data-i18n="navProgress">
+            Прогресс
+        </small>
+
+    </button>
+
+</nav>
+
+
+<!-- =========================
+     TOAST
+========================= -->
+
+<div id="toast" class="toast">
+    <span id="toastIcon">✓</span>
+    <span id="toastText"></span>
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
